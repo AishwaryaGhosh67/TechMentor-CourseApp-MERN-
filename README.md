@@ -1,0 +1,21 @@
+🚀 MERN Stack Project
+Backend: Node.js (Express)
+Run with: node server.js
+
+Frontend: React
+Run with: npm run dev
+
+Database: MongoDB Atlas
+
+🔧 Features:
+🔐 Token-Based Authentication (JWT)
+
+🧠 Context API for state management
+
+✅ JWT Token Verification
+
+🔎 Zod Schema Validation
+
+🛎️ React-Toastify for Alerts
+
+🛠️ Admin Panel
