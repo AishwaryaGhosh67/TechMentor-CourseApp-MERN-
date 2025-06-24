@@ -1,0 +1,690 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Urbanist, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color-scheme: light dark;
+}
+
+:root {
+  --bg-color: rgb(255, 255, 255);
+  --btn-color: rgb(190, 9, 245);
+  --dark-color: rgb(34, 23, 23);
+  --helper-color: rgb(220, 111, 245);
+
+}
+
+html {
+  font-size: 62.5%;
+}
+
+/* base style */
+body {
+  margin: 0;
+  min-width: 32rem;
+  min-height: 100vh;
+}
+
+
+h1 {
+  font-size: 5.4rem;
+  line-height: 1.1;
+  font-weight: bold;
+}
+
+li {
+  list-style: none;
+}
+
+p,
+li,
+label,
+input,
+textarea {
+  font-size: 1.8rem;
+  line-height: 1.56;
+  letter-spacing: 0.1rem;
+  word-spacing: 0.06rem;
+}
+
+a {
+  font-size: 1.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  color: var(--btn-color);
+  text-decoration: inherit;
+}
+
+.container {
+  max-width: 140rem;
+  padding: 4rem 2.4rem;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  gap: 6.4rem;
+}
+
+.grid-two-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-four-cols {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Modules Rules or reuseable components */
+button {
+  text-transform: capitalize;
+  padding: 0.5rem 1rem;
+  font-size: 1.7rem;
+  font-weight: 500;
+  background-color: var(--btn-color);
+  border-radius: 0.8rem;
+  border: 0.1rem solid transparent;
+  cursor: pointer;
+  letter-spacing: 0.1rem;
+  transition: border-color .3s;
+}
+
+.secondary-btn {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 0.2rem var(--bg-color);
+  margin-left: 2rem;
+}
+
+/* state rules */
+button:hover {
+  box-shadow: inset 0 0 0 0.2rem var(--bg-color);
+  /* border: 0.2rem solid ; */
+}
+
+a:hover,
+a:active {
+  color: rgb(190, 9, 245);
+  ;
+}
+
+/* Hero Section */
+.section-hero {
+  & .grid {
+    align-items: center;
+  }
+
+  .hero-content {
+    & p {
+      margin: 2.4rem 0 4.8rem 0;
+
+      &:first-child {
+        margin: 0 0 1.2rem 0;
+      }
+    }
+  }
+
+  .hero-image {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+/* 2nd section */
+.section-analytics {
+  margin: 9.6rem 0;
+
+  & .container {
+    background-color: var(--bg-color);
+    border-radius: 2rem;
+  }
+
+  & .grid {
+    color: var(--dark-color);
+
+    & .div1 {
+      text-align: center;
+      border-right: 0.2rem solid var(--dark-color);
+      padding-right: 4rem;
+
+      &:last-child {
+        border: none;
+      }
+
+      & h2 {
+        font-size: 3rem;
+      }
+
+      & p {
+        text-transform: capitalize;
+      }
+    }
+  }
+}
+
+/* Registration page  */
+/* Arrange label and input in a single row */
+
+.registration-form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.registration-form form>div {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Label styling inside form */
+.registration-form label {
+  flex: 0 0 120px;
+  /* fixed width for all labels */
+  font-weight: 700;
+  text-transform: capitalize;
+  margin: 0;
+}
+
+/* Input takes full remaining space */
+.registration-form input {
+  flex: 1;
+  padding: 1rem;
+  font-size: 1.6rem;
+  border: 1px solid #ccc;
+  border-radius: 0.8rem;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+/* Input focus styling */
+.registration-form input:focus {
+  border-color: #007bff;
+}
+
+/* Responsive: stack label and input vertically on small screens */
+@media (max-width: 600px) {
+  .registration-form form>div {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .registration-form label {
+    margin-bottom: 0.5rem;
+  }
+
+  .registration-form input {
+    width: 100%;
+  }
+}
+
+/* Login form */
+
+/* .login-form h1 {
+  font-size: 3.2rem;
+  margin-bottom: 2rem;
+} */
+.login-form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.login-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Each label-input pair as one row */
+.login-form form>div {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  /* prevent overflow */
+}
+
+/* Label styles */
+.login-form label {
+  flex: 0 0 120px;
+  font-weight: 700;
+  text-transform: capitalize;
+  margin: 0;
+}
+
+/* Input styles */
+.login-form input {
+  flex: 1;
+  padding: 1rem;
+  font-size: 1.6rem;
+  border: 1px solid #ccc;
+  border-radius: 0.8rem;
+  outline: none;
+  transition: border 0.3s ease;
+  min-width: 0;
+  /* prevents flex overflow */
+}
+
+/* Focus state */
+.login-form input:focus {
+  border-color: #007bff;
+}
+
+/* Mobile responsive: label on top */
+@media (max-width: 600px) {
+  .login-form form>div {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .login-form label {
+    margin-bottom: 0.5rem;
+  }
+
+  .login-form input {
+    width: 100%;
+  }
+}
+
+
+/* Contact form css */
+
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.contact-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.contact-form form>div {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  /* prevent overflow */
+}
+
+.contact-form label {
+  flex: 0 0 120px;
+  font-weight: 700;
+  text-transform: capitalize;
+  margin: 0;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1.8rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #007bff;
+}
+
+.contact-form textarea {
+  height: 180px;
+  resize: vertical;
+}
+
+@media (max-width: 600px) {
+  .contact-form form>div {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contact-form label {
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-form input {
+    width: 100%;
+  }
+}
+
+/* error page */
+#error-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  /* background-color: #f4f4f4; */
+}
+
+#error-page .content {
+  text-align: center;
+  padding: 15px;
+}
+
+.content h2 {
+  font-size: 18vw;
+  line-height: 1.1;
+  animation: animate 10s ease-in-out infinite;
+  background: -webkit-repeating-linear-gradient(-60deg,
+      #6cbff7,
+      var(--btn-color),
+      #5c69ef,
+      #9551ee,
+      #f560a3,
+      var(--btn-color),
+      #6cbff7);
+  background-size: 500%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 3px 3px 10px rgba(114, 92, 92, 0.5);
+  position: relative;
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0 0;
+  }
+
+  25% {
+    background-position: 100% 0;
+  }
+
+  50% {
+    background-position: 100% 100%;
+  }
+
+  75% {
+    background-position: 0 100%;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.content h3 {
+  margin-top: 15px;
+}
+
+.content p {
+  margin: 20px 0;
+}
+
+.btns {
+  margin-top: 30px;
+  margin-bottom: 25px;
+}
+
+.btns a {
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: var(--btn-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.btns a:hover {
+  box-shadow: inset 0 0 0 0.2rem var(--bg-color);
+}
+
+
+
+
+/* FOR THE SERVICE PAGE */
+
+.section-services {
+  padding: 5rem 0;
+}
+
+.container-services {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Grid layout for exactly 3 cards per row */
+.section-services .grid-three-cols {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.2rem;
+  padding: 0 2rem;
+  justify-items: center;
+  /* Center cards in grid */
+}
+
+/* Individual card styling */
+.section-services .card {
+  max-width: 320px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: var(--bg-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.section-services .card:hover {
+  transform: translateY(-4px);
+}
+
+/* Card image */
+.section-services .card-img img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Card content */
+.section-services .card-details {
+  padding: 1.5rem;
+}
+
+.section-services .card-details h2 {
+  font-size: 1.8rem;
+  margin: 0.8rem 0;
+  color: #222;
+}
+
+.section-services .card-details p {
+  font-size: 1.6rem;
+  color: #444;
+  margin: 0.3rem 0;
+}
+
+/* Provider and price row */
+.section-services .card-details .grid-two-cols {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+}
+
+
+@media (max-width: 900px) {
+  .section-services .grid-three-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .section-services .grid-three-cols {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+/* ADMIN PAGE - USERS VIEW */
+
+th {
+  font-size: 1.8rem;
+  letter-spacing: 0.1rem;
+  padding: 2.5rem;
+  text-align: center;
+  background-color: #d8b4e2;
+  color: var(--dark-color);
+  border-bottom: 2px solid #b59ccf;
+}
+
+td {
+  font-size: 1.7rem;
+  letter-spacing: 0.1rem;
+  padding: 3rem;
+  text-align: center;
+  color: var(--dark-color);
+  width: 30rem;
+}
+
+table {
+  background: #f2e0f7;
+  box-shadow: rgb(147, 143, 143) 0px 7px 29px 0px;
+  border-collapse: collapse;
+  border-radius: 1rem;
+
+}
+
+body tr {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(10rem, 1fr));
+  align-items: center;
+  box-shadow: 0 0.3rem 0 gray;
+  margin-bottom: 10px;
+  border-bottom: 4px solid transparent;
+  color: var(--bg-color);
+
+  &:last-child {
+    box-shadow: none;
+  }
+}
+
+.updateLink {
+  background: #f2e0f7;
+  color: rgb(15, 141, 15);
+  border-radius: 3rem;
+  padding: 1rem 4rem;
+
+  &:hover {
+    color: #f2e0f7;
+    background: rgb(15, 141, 15);
+    font-weight: bold;
+  }
+}
+
+.deleteLink {
+  background: #f2e0f7;
+  color: rgb(252, 81, 81);
+  border-radius: 3rem;
+  padding: 1rem 4rem;
+
+  &:hover {
+    color: #f2e0f7;
+    background: rgb(252, 81, 81);
+    font-weight: bold;
+  }
+}
+
+
+/* ADMIN CONTACTS - TABLE VIEW */
+
+.admin-contacts-section {
+  padding: 4rem 2rem;
+}
+
+.admin-contacts-section h1 {
+  font-size: 3.2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--bg-color);
+}
+
+.admin-contacts {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.admin-contacts table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #f2e0f7;
+  box-shadow: rgb(147, 143, 143) 0px 7px 29px 0px;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.admin-contacts th {
+  font-size: 1.8rem;
+  letter-spacing: 0.1rem;
+  padding: 2rem;
+  background-color: #d8b4e2;
+  color: var(--dark-color);
+  border-bottom: 2px solid #b59ccf;
+  text-align: center;
+}
+
+.admin-contacts td {
+  font-size: 1.6rem;
+  padding: 1.8rem;
+  text-align: center;
+  color: var(--dark-color);
+  word-break: break-word;
+  border-bottom: 1px solid #ddd;
+}
+
+.admin-contacts thead tr{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(10rem, 1fr));
+  align-items: center;
+  box-shadow: 0 0.3rem 0 gray;
+  /* margin-bottom: 10px; */
+   &:last-child {
+    box-shadow: none;
+   }
+}
+
+.admin-contacts tbody tr{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(10rem, 1fr));
+  align-items: center;
+  box-shadow: 0 0.3rem 0 gray;
+  margin-bottom: 10px;
+
+   &:last-child {
+    box-shadow: none;
+   }
+}
+
+.admin-contacts tbody tr:hover {
+  background-color: #f9e8ff;
+}
+
+.deleteBtn {
+  background: #f2e0f7;
+  color: rgb(252, 81, 81);
+  border-radius: 3rem;
+  padding: 1rem 3rem;
+  font-size: 1.4rem;
+  border: 2px solid rgb(252, 81, 81);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.deleteBtn:hover {
+  background: rgb(252, 81, 81);
+  color: #fff;
+  font-weight: bold;
+}
+
+

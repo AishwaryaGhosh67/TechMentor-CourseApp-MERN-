@@ -1,0 +1,18 @@
+MERN STACK Project
+
+Backend: Node Js(Express js) 
+         node server.js 
+
+Frontend: React
+          npm run dev
+
+Database: Mongodb Atlas
+
+properties: 
+1. Token Based Authentication
+2. Context API
+3. JWT token varification
+4. Zod validation
+5. Use react toastify for alert
+6. Admin panel
+
