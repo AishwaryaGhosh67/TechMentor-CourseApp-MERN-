@@ -43,7 +43,7 @@ export const Contact = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch(`${api}/api/form/contact`, {
+            const response = await fetch(`${API}/api/form/contact`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

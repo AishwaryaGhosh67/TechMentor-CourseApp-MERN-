@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { Contact } from "./pages/Contact";
@@ -13,13 +13,16 @@ import { AdminLayout } from "./components/layouts/Admin-Layouts";
 import { AdminUsers } from "./pages/Admin-Users";
 import { AdminContacts } from "./pages/Admin-Contacts";
 import { AdminUpdate } from "./pages/Admin-Update";
+import { AdminOrders } from "./pages/Admin-Orders";
+import { useEffect } from "react";
 
+const AppWrapper = () => {
+    const location = useLocation();
+    const isAdminRoute = location.pathname.startsWith("/admin");
 
-
-const App = () => {
-    return <>
-        <BrowserRouter>
-            <Navbar />
+    return (
+        <>
+            {!isAdminRoute && <Navbar />}
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
@@ -31,15 +34,25 @@ const App = () => {
                 <Route path="*" element={<Error />} />
 
                 <Route path="/admin" element={<AdminLayout />}>
+                    <Route index element={<AdminUsers />} />   {/* This shows when you go to /admin */}
                     <Route path="users" element={<AdminUsers />} />
                     <Route path="contacts" element={<AdminContacts />} />
                     <Route path="users/:id/edit" element={<AdminUpdate />} />
                     <Route path="service" element={<Service />} />
+                    <Route path="orders" element={<AdminOrders />} />
                 </Route>
             </Routes>
             <Footer />
+        </>
+    );
+};
+
+const App = () => {
+    return (
+        <BrowserRouter>
+            <AppWrapper />
         </BrowserRouter>
-    </>;
+    );
 };
 
 export default App;

@@ -11,9 +11,9 @@ export const Login = () => {
     });
 
     const navigate = useNavigate();
-    const { storeTokenInLS,API } = useAuth();
+    const { storeTokenInLS, API } = useAuth();
 
-   const URL = `${API}/api/auth/login`;
+    const URL = `${API}/api/auth/login`;
 
 
     // handling the input value
@@ -31,7 +31,7 @@ export const Login = () => {
     //handling the form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(user);
+        // console.log(user);
         try {
             const response = await fetch(URL, {
                 method: "POST",
@@ -46,8 +46,16 @@ export const Login = () => {
                 //store the token in server side
                 storeTokenInLS(res_data.token);
                 toast.success("Login Successful");
-                console.log("Its is my user",user);
-                navigate("/");
+                console.log("Its is my user", user);
+                // console.log("Its is my res user", res_data.isAdmin);
+                console.log("Type of res_data.isAdmin:", typeof res_data.isAdmin, res_data.isAdmin);
+
+                if (res_data.isAdmin) {
+                    navigate("/admin/users");
+                } else {
+                    navigate("/");
+                }
+
             }
             else {
                 toast.error("Invalid Credentials");

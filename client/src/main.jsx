@@ -20,7 +20,7 @@ createRoot(document.getElementById('root')).render(
         draggable
         pauseOnHover
         theme="colored"
-        // bodyClassName="toastBody"
+      // bodyClassName="toastBody"
       />
     </StrictMode>
   </AuthProvider>

@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 export const AdminUsers = () => {
     const [users, setusers] = useState([]);
 
-    const { authorizationToken, API } = useAuth();
+    const { authorizationToken, API, user } = useAuth(); // includes current logged-in user
 
     const getAllUsersData = async () => {
         try {
@@ -14,33 +14,36 @@ export const AdminUsers = () => {
                 method: "GET",
                 headers: {
                     Authorization: authorizationToken,
-                }
+                },
             });
             const data = await response.json();
-            console.log(`users get data ${data}`);
             setusers(data);
-
         } catch (error) {
             console.log(error);
         }
     };
 
-    // delete the users on delete button
-    const deleteUser = async (id) => {
+    const deleteUser = async (id, email) => {
+        // Prevent self-deletion
+        if (user?.email === email) {
+            toast.warning("You cannot delete your own admin account.");
+            return;
+        }
+
         try {
             const response = await fetch(`${API}/api/admin/users/delete/${id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: authorizationToken,
-                }
+                },
             });
             const data = await response.json();
-            // console.log(`users get data after delete ${data}`);
+
             if (response.ok) {
                 getAllUsersData();
-                toast.success("User Deleted Successfully.")
+                toast.success("User Deleted Successfully.");
             } else {
-                toast.error("Oops! User not deleted.")
+                toast.error("Oops! User not deleted.");
             }
         } catch (error) {
             console.log(error);
@@ -54,9 +57,8 @@ export const AdminUsers = () => {
     return (
         <>
             <section className="admin-users-section">
-                <div className="container">
-                    <h1>Admin Users Data</h1>
-                </div>
+                <h1 style={{ textAlign: "center", fontSize: "2.7rem" }}>All Users Data</h1>
+
                 <div className="container admin-users">
                     <table>
                         <thead>
@@ -69,15 +71,29 @@ export const AdminUsers = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {users.map((curUser, index) => {
-                                return <tr key={index}>
+                            {users.map((curUser, index) => (
+                                <tr key={index}>
                                     <td>{curUser.username}</td>
                                     <td>{curUser.email}</td>
                                     <td>{curUser.phone}</td>
-                                    <td><Link to={`/admin/users/${curUser._id}/edit`} className="updateLink">Edit</Link></td>
-                                    <td><button className="deleteLink" onClick={() => deleteUser(curUser._id)}>Delete</button></td>
+                                    <td>
+                                        <Link to={`/admin/users/${curUser._id}/edit`} className="updateLink">
+                                            Edit
+                                        </Link>
+                                    </td>
+                                    <td>
+                                        {user?.email === curUser.email ? (
+                                            <button className="deleteLink" disabled style={{ opacity: 0.5, cursor: "not-allowed" }}>
+                                                Can't Delete
+                                            </button>
+                                        ) : (
+                                            <button className="deleteLink" onClick={() => deleteUser(curUser._id, curUser.email)}>
+                                                Delete
+                                            </button>
+                                        )}
+                                    </td>
                                 </tr>
-                            })}
+                            ))}
                         </tbody>
                     </table>
                 </div>

@@ -19,7 +19,6 @@ export const Navbar = () => {
                     <div className="logo-brand">
                         <NavLink to="/">TechMentor(Online Technical Course)</NavLink>
                     </div>
-
                     <nav>
                         <ul>
                             <li><NavLink to="/"><ImHome /> Home</NavLink ></li>
