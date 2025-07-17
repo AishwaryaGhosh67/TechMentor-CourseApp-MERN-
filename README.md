@@ -14,6 +14,7 @@ Database: MongoDB Atlas
 🔎 Zod Schema Validation
 🛎️ React-Toastify for Alerts
 🛠️ Admin Panel
+💳 Razorpay Integration for Secure Payments
 
 ![image](https://github.com/user-attachments/assets/93736dad-2c01-4aaa-ab36-0ff7126e418b)
 
@@ -26,6 +27,10 @@ USER PANEL
 ![image](https://github.com/user-attachments/assets/59ae2045-80c6-455e-8661-3f7c5533bdab)
 
 ![image](https://github.com/user-attachments/assets/3fb0b4db-2c42-44c5-a611-3091b6aafc96)
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/0cc77627-5626-4a75-be30-19c6cd5a1bda" />
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/9981dd1e-b0ec-4ce1-b131-e0f6b8a58324" />
 
 ADMIN PANEL 
 
